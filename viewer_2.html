@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<!-- VIEWER VER 2, DIFFERENCE FROM VER 1 -- USE OF asynchronous REQUESTS FOR XML AND XSLT FILES  -->
+<head>
+<meta charset="UTF-8">
+<title>Lang Possession Strategies</title>
+<script type="text/javascript"></script>
+<script type="text/javascript">
+	//var lang1 = "Baure"
+	//var langsInDB = 0;
+
+	//The List of Languages from DB
+	var xmlFile = "./DB/Database_merged.xml";
+	var xsltLangList = "LangList.xsl";
+	var xsltLangDB2HTML = "LangDB2HTML.xsl";//XSLT fire for One Language transformation for Viewer (with strategies)
+	var xml;//Loaded XML DB file
+	var xsltProcessor;
+
+	var langDBList;
+
+	var langShown = 0;
+	var pronPossDisplay = false;
+	var nominPossDisplay = false;
+
+	//synch request is NOT Used here
+	function loadXMLDoc(filename) {
+		xhttp = new XMLHttpRequest();
+
+		xhttp.open("GET", filename, false);
+		xhttp.responseType = "msxml-document";
+		xhttp.send("");
+		return xhttp.responseXML;
+	}
+
+	function requestXMLFile(fileName, handler) {
+		var httpRequest = new XMLHttpRequest();
+		if (!httpRequest) {
+			alert('Giving up :( Cannot create an XMLHTTP instance');
+			return false;
+		}
+		httpRequest.onreadystatechange = handler;
+		httpRequest.open('GET', fileName);
+		httpRequest.send();
+	}
+
+	function initHTMLPage() {
+		//xml = loadXMLDoc(xmlFile);
+		//var xsl = loadXMLDoc("LangList.xsl");
+		xsltProcessor = new XSLTProcessor();
+
+		requestXMLFile(xmlFile, handler4XML_DB);
+	}
+
+	function handler4XML_DB() {
+		if (this.readyState == this.DONE) {
+			var redState = this.readyState;// === 4)
+			//if (this.status == 200 && this.responseXML != null 	&& this.responseXML.getElementById('LanguageData').textContent) {
+			var stat = this.status;
+			var statT = this.statusText;
+			if (this.responseXML != null) {
+
+				// success!
+				xml = this.responseXML;
+				
+				var lang0=	xml.getElementsByTagName("LangID")[0].childNodes[0].nodeValue;
+				var langS=
+					xml.getElementsByTagName("LangID");
+				//LOCAL STORAGE
+			//http://inflagrantedelicto.memoryspiral.com/2013/05/phonegap-saving-arrays-in-local-storage/	
+//				Storage.prototype.setArray = function(key, obj) {
+	//			    return this.setItem(key, JSON.stringify(obj))
+		//		}
+//				Storage.prototype.getArray = function(key) {
+	//			    return JSON.parse(this.getItem(key))
+		//		}
+
+				// TEST JAVASCRIPT 
+				// var LangName0=xml.getElementsByTagName("LangID").length;
+				//alert("lang 000="+LangName0);
+				// var LangName1=xml.getElementsByTagName("LangID")[1].childNodes[0].nodeValue; 
+				// alert("lang 111="+LangName1);
+
+				//processXML_DB(this.responseXML);
+				//alert("Language DB will be processed!");
+				requestXMLFile(xsltLangList, handler4XSLT_LangList);
+			} else {
+				// something went wrong
+				alert('ReadyState is Not4! There was a problem with the request. DB XML file was not loaded!');
+			}
+		}
+	}
+
+	function handler4XSLT_LangList() {
+
+		if (this.readyState == this.DONE) {
+			var redState = this.readyState;// === 4)
+			//if (this.status == 200 && this.responseXML != null 	&& this.responseXML.getElementById('LanguageData').textContent) {
+			var stat = this.status;
+			var statT = this.statusText;
+			if (this.responseXML != null) {
+
+				// success!
+				var xsl = this.responseXML;
+				//				alert("LangList XSLT will be applied!");
+				xsltProcessor.reset();
+				xsltProcessor.importStylesheet(xsl);
+
+				LangsInDB();
+				requestXMLFile(xsltLangDB2HTML, handler4XSLT_LangDB2HTML);
+			} else {
+				// something went wrong
+				alert('ReadyState is Not4! There was a problem with the request. LangList XSLT file was not loaded!');
+			}
+		}
+	}
+
+	function handler4XSLT_LangDB2HTML() {
+		if (this.readyState == this.DONE) {
+			var redState = this.readyState;// === 4)
+			//if (this.status == 200 && this.responseXML != null 	&& this.responseXML.getElementById('LanguageData').textContent) {
+			var stat = this.status;
+			var statT = this.statusText;
+			if (this.responseXML != null) {
+				// success!
+				var xsl = this.responseXML;
+				//alert("LangDB2HTML XSLT will be applied!");
+
+				xsltProcessor.reset();
+				xsltProcessor.importStylesheet(xsl);
+
+				displayLang(-1);
+
+			} else {
+				// something went wrong
+				alert('ReadyState is Not4! There was a problem with the request. LangDB2HTML XSLT file was not loaded!');
+			}
+		}
+	}
+
+	function clickShowStrat(poss2show) {
+		var displayed = true;
+		if (poss2show == 'StrategyPronomTable') {
+			displayed = pronPossDisplay;
+			pronPossDisplay = !pronPossDisplay;
+		} else if (poss2show == 'StrategyNominTable') {
+			displayed = nominPossDisplay;
+			nominPossDisplay = !nominPossDisplay;
+		}
+		if (displayed) {
+			showHideStrategies(poss2show, false);//hiding Strategies
+		} else {
+			showHideStrategies(poss2show, true);//hiding Strategies
+		}
+	}
+
+	function showHideStrategies(possTable, displayStrat) {
+		//alert("watch your strategies");
+		//document.getElementById("example").appendChild(resultDocument);
+		var strategiesPronPoss = document.getElementById(possTable);
+		var displValue = 'table'
+		if (displayStrat) {
+			displValue = 'table';
+		} else {
+			displValue = 'none';
+		}
+		strategiesPronPoss.style.display = displValue;
+	//	for (var row = 0; row < strategiesPronPoss.length; row++) {
+		//	strategiesPronPoss[row].style.display = displValue;
+	//	}
+	}
+
+	function LangsInDB() {
+
+		langDBList = xsltProcessor.transformToFragment(xml, document);
+
+		//		alert(langDBList.childNodes.length);
+		//langsInDB = (langDBList.childNodes.length); //Number of Languages in DB
+		document.getElementById("langsInDB").innerHTML = langDBList.childNodes.length;
+
+		var langsList = "";
+		for (var langI = 1; langI < langDBList.childNodes.length; langI++) {
+			var langNode = document.getElementById("langsList").lastChild
+					.cloneNode(true);
+			document.getElementById("langsList").appendChild(langNode);
+		}
+
+		for (var langI = 0; langI < langDBList.childNodes.length; langI++) {
+			var langNode = document.getElementById("langsList").childNodes[langI];
+			langNode.innerHTML = " " + langDBList.childNodes[langI].innerHTML;
+			if (langI < langDBList.childNodes.length - 1) {
+				langNode.innerHTML += " |";
+			}
+			var attrOnClick = "displayLang(" + langI + ")";
+			document.getElementById("langsList").childNodes[langI]
+					.setAttribute("onclick", attrOnClick);
+
+		}
+		//document.getElementById("langsList").innerHTML = langsList;
+		//document.getElementById("langsList").setAttribute("onclick","displayLang(2)");
+
+		//alert(result1.childNodes[0].innerHTML);
+	}
+
+	function displayLangMove(move) {
+		//display Next +1;Previous -1;etc lang
+		langNumb = langShown + move;
+		displayLang(langNumb);
+	}
+
+	function displayLang(langNumb2Displ) {
+		//alert(langDBList.childNodes[langShown].innerHTML);
+		//var xsl = loadXMLDoc(xsltLangTransf);
+
+		//var devVer=window.confirm("Run development Version?");
+		//if(devVer){
+		//	xsl = loadXMLDoc("LangDB2HTML_test.xsl");
+
+		//}
+
+		//var xsltProcessor = new XSLTProcessor();
+		//xsltProcessor.importStylesheet(xsl);
+
+		document.getElementById("langPrev").disabled = false;
+		document.getElementById("langNext").disabled = false;
+
+		//langShown++;
+		langShown = langNumb2Displ;
+		if (langShown <= 0) {
+			langShown = 0;
+			document.getElementById("langPrev").disabled = true;
+		}
+		if (langShown >= langDBList.childNodes.length - 1) {
+			//langShown = langsInDB;
+			document.getElementById("langNext").disabled = true;
+			;
+		}
+
+		langName2Show = langDBList.childNodes[langShown].innerHTML;
+
+		xsltProcessor.setParameter(null, "id", langShown);
+		xsltProcessor.setParameter(null, "LangID", langName2Show);
+
+		var sortVal = xsltProcessor.getParameter(null, "myOrder");
+
+		if (sortVal == "" || sortVal == "descending") {
+			xsltProcessor.setParameter(null, "myOrder", "ascending");
+		} else {
+			xsltProcessor.setParameter(null, "myOrder", "descending");
+		}
+		var testParam = xsltProcessor.getParameter(null, "myOrder");
+		//xsltProcessor.setParameter("id", "a1234");
+
+		var resultDocument = xsltProcessor.transformToFragment(xml, document);
+		var ex1 = document.getElementById("example");
+		ex1.removeChild(ex1.childNodes[0]);
+
+		document.getElementById("example").appendChild(resultDocument);
+		showHideStrategies('StrategyPronomTable', pronPossDisplay);
+		showHideStrategies('StrategyNominTable', nominPossDisplay);
+	}
+</script>
+<style type="text/css">
+.debug {
+	color: red;
+	font-weight: bold;
+}
+
+.attrValue {
+	font-weight: bold;
+	font-size:small;
+	}
+.attrNameValue {
+	white-space: nowrap;
+font-size:small;
+	
+}
+
+.examplesTD {
+	white-space: nowrap;
+	font-family: sans-serif, serif;
+	font-size: larger;
+}
+
+.pPron,.pPosor,.pMorp,.pPosed,.pText {
+	background-color: #e2e9e5;
+}
+
+.pPron {
+	color: #ac0000;
+}
+
+.pPosor {
+	color: #004900;
+}
+
+.pMorp {
+	font-weight: bold;
+	color: #0000ca;
+}
+
+.pPosed {
+	font-weight: bold;
+}
+
+.pText {
+	
+}
+
+.StrategyPronomHeaderRow {
+	background-color: #aea9a4
+}
+
+.MorphRow {
+	background-color: #a7d7ff;
+}
+
+.SyntEnvRow {
+	background-color: #d5ffa7;
+}
+
+.SemantRow {
+	background-color: #fff2a7;
+	vertical-align: top;
+}
+
+#StrategyPronomTable td {
+	width: 5em;
+}
+
+.stratTag {
+	color: red;
+	font-weight: bold;
+}
+
+#langsList span {
+	text-decoration: underline;
+	font-size: small;
+}
+
+#langsList span:hover {
+	background-color: yellow;
+	cursor: pointer;
+}
+
+.langTag {
+	color: blue;
+	font-weight: bold;
+	background-color: #E0E0E0;
+}
+
+.pronPossHeader,.nominPossHeader {
+	clear: both;
+}
+
+.stratTablePronPoss th {
+	background-color: #D0D090;
+}
+
+#stratTableNomPoss {
+	clear: both;
+	min-width: 3000px;
+}
+
+#stratTableNomPoss table {
+	border-width: 2px;
+	position: relative;
+	float: left;
+	max-width: 400px;
+}
+
+#genInfoTable,.possTable {
+	min-width: 1524px;
+	max-width: 1524px;
+}
+#rawDataLink {
+	padding-left: 3em;
+	font-weight: normal;
+}
+
+.possTable th {
+	background-color: #F0F000;
+}
+
+#StrategyPronomTable, #StrategyNominTable,.pronPoss {
+	display: none;
+}
+
+#genInfo {
+	background-color: #ABD5B1;
+}
+
+th {
+	font-size: larger;
+}
+
+table,th {
+	border-style: solid;
+	border-width: 2px;
+	border-collapse: collapse;
+	border-color: black;
+}
+
+td {
+	border-style: solid;
+	border-width: 2px;
+	border-collapse: collapse;
+	border-style: solid;
+}
+
+.second {
+	word-wrap: normal;
+	max-width: 500px;
+	width: auto;
+	table-layout: fixed;
+}
+
+.tag {
+	width: 100px;
+	background-color: #d0d0d0;
+	font-weight: bold;
+}
+</style>
+
+</head>
+<body onload="initHTMLPage();">
+	<div>
+		<div>
+			<span class="langTag">Languages in DB: </span><span class="langTag"
+				id="langsInDB">0</span> <span class='debug' id="langsList"><span>Node2Clone</span></span>
+
+		</div>
+		<hr />
+		<input id="langPrev" type="button" value="<< | Show Previous Lang "
+			onclick="displayLangMove(-1)" /> <input id="langNext" type="button"
+			value="Show Next Lang | >>" onclick="displayLangMove(1)" />
+	</div>
+	<div class='debug' id="langsList"></div>
+	<hr />
+	<div id="example">DB Languages, XML file is not loaded!</div>
+</body>
+</html>

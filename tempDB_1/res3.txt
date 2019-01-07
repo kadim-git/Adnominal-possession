@@ -1,0 +1,59 @@
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element ExampleStr: Schemas validity error : Element 'ExampleStr': Character content is not allowed, because the content type is empty.
+Database_merged_2017_07.xml:1: element ExampleStr: Schemas validity error : Element 'ExampleStr': Character content is not allowed, because the content type is empty.
+Database_merged_2017_07.xml:1: element OptionallyPossessed: Schemas validity error : Element 'OptionallyPossessed': The attribute 'InfoStatus' is required but missing.
+Database_merged_2017_07.xml:1: element OptionallyPossessed: Schemas validity error : Element 'OptionallyPossessed': The attribute 'InfoStatus' is required but missing.
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': The attribute 'InfoStatus' is required but missing.
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Character content other than whitespace is not allowed because the content type is 'element-only'.
+Database_merged_2017_07.xml:1: element ObligatoryPossessed: Schemas validity error : Element 'ObligatoryPossessed': Missing child element(s). Expected is one of ( i, Remark, Detransitivisation ).
+Database_merged_2017_07.xml:1: element StrategyPronomNonCanonical: Schemas validity error : Element 'StrategyPronomNonCanonical': Missing child element(s). Expected is ( Morphology ).
+Database_merged_2017_07.xml fails to validate

@@ -1,0 +1,589 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- A version for a large finle with language data
+ Changed "Dedicattion" into "Dedicated"
+"Label" into "GramDefLabel" Grammar Defined Agreement
+Structure of "MorphemeNom" (Nominal Phrase) changed, three elements introduced: "DetDem" (comes as Derminer and Demontrative), "Case", "AdjectivalMod" (for adjectival modifier) these elements have attributes
+Added elements: Asymmetry and Correspondence with included elements
+An element "Determiner" is added to "Morphology"; it has attributes DetPossessor="" PlacementOr="" DetPossessed="" PlacementEd=""
+
+++++++++++++++++++++++++++++++++++++++++++++++++++
+Attribute Complexity deleted because it was redundand
+
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="LanguageData">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded"  name="Language"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+<xs:element name="Language">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="GeneralInfo"/>
+				<xs:element ref="Possession"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+		</xs:complexType>
+</xs:element>
+
+		
+	
+	<xs:element name="GeneralInfo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="LangID" type="xs:token" />
+				<xs:element name="Location" type="xs:string"/>
+				<xs:element name="Country" maxOccurs="unbounded" type="xs:string"/>
+				<xs:element name="GeneticRelation" type="xs:string"/>
+				<xs:element name="WordOrder" type="xs:string"/>
+				<xs:element name="NominalPhrase">
+				<xs:complexType mixed="true">
+				<xs:sequence>
+					<xs:element name="DetDem">
+					<xs:complexType>
+					<xs:sequence>
+					<xs:element minOccurs="0" ref="DeterminerNP"/>
+					<xs:element minOccurs="0" ref="DemonstrativeNP"/>
+					</xs:sequence>
+					</xs:complexType>
+					</xs:element>
+				<xs:element name="AdjectivalMod">
+					<xs:complexType mixed="true">
+						<xs:attribute name="Explanation" type="xs:string"/>
+						<xs:attribute name="Position" type="xs:string"/>
+						<xs:attribute name="Agreement" type="xs:string"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Case">
+					<xs:complexType mixed="true">
+						<xs:attribute name="Explanation" type="xs:string"/>
+						<xs:attribute name="Marker" type="xs:string"/>
+						<xs:attribute name="AttachmentSite"  type="xs:string"/>
+						<xs:attribute name="Position" type="xs:string"/>
+					</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				</xs:complexType>
+				</xs:element>
+				<xs:element name="InterchangeaStrategies">
+				<xs:complexType>
+					<xs:sequence>
+					<xs:element minOccurs="0" maxOccurs="unbounded" ref="ExampleStr"/>
+					</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="RelStrategies"> 
+					<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Correspondence">
+							<xs:complexType>
+								<xs:sequence>
+								<xs:element name="PrnominalToNominal"  minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>	
+						<xs:element name="AsymmetryGen">
+							<xs:complexType>
+								<xs:sequence>
+								<xs:element name="Pronominal"  minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+								<xs:element name="Nominal"  minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+								</xs:sequence>	
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Reflexivity" minOccurs="0" maxOccurs="unbounded" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	
+		<xs:element name="ExampleStr">
+					<xs:complexType>
+						<xs:attribute name="WordChanging" type="xs:string"/>
+						<xs:attribute name="Strategies" type="xs:string"/>
+						<xs:attribute name="FactorsAffecting" type="xs:string"/>
+					</xs:complexType>
+					</xs:element>	
+					<xs:element name="DeterminerNP">
+					<xs:complexType mixed="true">
+						<xs:attribute name="Explanation" type="xs:string"/>
+						<xs:attribute name="Agreement" type="xs:string"/>
+						<xs:attribute name="AttachmentSite" type="xs:string"/>
+						<xs:attribute name="Position" type="xs:string"/>
+					</xs:complexType>
+					</xs:element>
+					<xs:element name="DemonstrativeNP">
+					<xs:complexType mixed="true">
+						<xs:attribute name="Explanation" type="xs:string"/>
+						<xs:attribute name="Agreement" type="xs:string"/>
+						<xs:attribute name="AttachmentSite" type="xs:string"/>
+						<xs:attribute name="Position" type="xs:string"/>
+					</xs:complexType>
+					</xs:element>
+	
+	<xs:element name="Possession">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PronominalPossession"/>
+				<xs:element ref="NominalPossession"/>
+			</xs:sequence>
+		</xs:complexType>
+		
+		<xs:key name="keyStrategy">
+			<xs:selector xpath="./PronominalPossession/StrategyPronom" />
+			<xs:field xpath="@StrategyID" />
+		</xs:key>
+		
+		<xs:keyref name="keyrefStrategy" refer="keyStrategy">
+			<xs:selector xpath="./NominalPossession/Strategy/PronStrategy" />
+			<xs:field xpath="@refStrategyID" />
+		</xs:keyref>
+	
+		</xs:element>
+	
+	
+	
+	<xs:element name="PronominalPossession">
+		<xs:complexType>
+			<xs:sequence>
+				<!--<xs:element maxOccurs="unbounded" ref="Strategy"/>-->
+				<xs:element maxOccurs="unbounded" ref="StrategyPronom"/>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="StrategyPronomNonCanonical"/>
+				<xs:element minOccurs="0" ref ="StrategyNotFound"></xs:element>
+				
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="NominalPossession">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="StrategyNomMorph"></xs:element>
+					<xs:element ref="StrategyNomJuxt"></xs:element>
+					<xs:element ref="StrategyNomPron"></xs:element>
+					<xs:element ref="StrategyNomNonCanonical"></xs:element>
+					<xs:element ref ="StrategyNotFound"></xs:element>
+					
+					
+					<!-- TEMP ELEMENT TO DELETE WHEN STRATEGIES ARE CORRECTED-->
+					<xs:element ref="Strategy"/>
+				
+				</xs:choice>
+			
+			</xs:sequence>
+		
+		</xs:complexType>
+	</xs:element>
+			
+	
+	<xs:element name="StrategyNotFound">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element name="ConsultedResources" type="xs:string"></xs:element>
+					<xs:element name="ResourcesToCheck" type="xs:string"></xs:element>
+					<xs:element minOccurs="0" ref="Semantics"/>
+				</xs:choice>
+				<xs:element minOccurs="0" ref="SyntEnvironment"/>			
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	
+	
+	<xs:element name="StrategyNomMorph">
+		<xs:complexType>
+			<xs:sequence>
+			<xs:element name="PronStrategy" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="refStrategyID" use="required" type="xs:string"></xs:attribute>
+					</xs:complexType>
+				</xs:element>	
+			
+				<xs:element minOccurs="0" ref="Semantics"/>
+				<xs:element minOccurs="0" ref="Morphology"/>
+				<xs:element ref="SyntEnvironment"/>
+			
+			</xs:sequence>
+		<!--	<xs:attribute name="Complexity" use="required" type="ComplexityAttrType"/> -->
+			<xs:attribute name="StrategyID" use="required" type="xs:string"/>
+		
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="StrategyNomJuxt">
+		<xs:complexType>
+			<xs:sequence>
+			<xs:element name="PronStrategy" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="refStrategyID" use="required" type="xs:string"></xs:attribute>
+					</xs:complexType>
+				</xs:element>	
+			
+				<xs:element minOccurs="0" ref="Semantics"/>
+				<xs:element ref="Juxtaposition"/>
+				<xs:element ref="SyntEnvironment"/>
+			
+			</xs:sequence>
+			<xs:attribute name="StrategyID" use="required" type="xs:string"/>
+		
+		</xs:complexType>
+	</xs:element>
+		
+	<xs:element name="StrategyNomPron">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PronStrategy" minOccurs="1" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="refStrategyID" use="required" type="xs:string"></xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				
+				<xs:element minOccurs="0" ref="Semantics"/>
+				<xs:choice>
+					
+					<xs:element minOccurs="0" ref="Juxtaposition"/>
+					<xs:element minOccurs="0" ref="Morphology"/>
+				</xs:choice>
+				
+				<xs:element ref="SyntEnvironment"/>
+			
+			</xs:sequence>
+			<xs:attribute name="StrategyID" use="required" type="xs:string"/>
+		
+		</xs:complexType>
+	</xs:element>
+	
+	
+	
+	<xs:element name="StrategyNomNonCanonical">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Morphology"/>
+				<xs:element ref="SyntEnvironment"/>
+			
+			</xs:sequence>
+		<!--	<xs:attribute name="Complexity" type="ComplexityAttrType" use="required" /> -->
+			<xs:attribute name="StrategyID" type="xs:string" use="required" />
+		
+		</xs:complexType>
+	</xs:element>
+	
+	
+	<xs:element name="StrategyPronom">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Semantics"/>
+				<xs:element ref="Morphology"/>
+				<xs:element ref="SyntEnvironment"/>
+			
+			</xs:sequence>
+		<!--	<xs:attribute name="Complexity" type="ComplexityAttrType" use="required" /> -->
+			<xs:attribute name="StrategyID" type="xs:string" use="required" />
+		
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="StrategyPronomNonCanonical">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Morphology"/>
+				<xs:element ref="SyntEnvironment"/>
+			
+			</xs:sequence>
+		<!--	<xs:attribute name="Complexity" type="ComplexityAttrType" use="required" /> -->
+			<xs:attribute name="StrategyID" type="xs:string" use="required" />
+		
+		</xs:complexType>
+	</xs:element>
+	
+	
+	<xs:element name="Strategy">
+		<xs:complexType>
+			<xs:sequence>
+<!--				<xs:element minOccurs="0" ref="Remark"/> -->
+				<xs:element name="PronStrategy" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="refStrategyID" type="xs:string"></xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				
+				<xs:element minOccurs="0" ref="Semantics"/>
+				<xs:choice>
+					
+					<xs:element minOccurs="0" ref="Juxtaposition"/>
+					<xs:element minOccurs="0" ref="Morphology"/>
+				</xs:choice>
+				
+				<xs:element ref="SyntEnvironment"/>
+			
+			</xs:sequence>
+			<xs:attribute name="SharedWithPronominal" type="xs:string"/>
+		<!--	<xs:attribute name="Complexity" type="ComplexityAttrType"/> -->
+			<xs:attribute name="Replaceable" type="ReplaceableAttrType" />
+			
+			<xs:attribute name="StrategyID" type="xs:string"/>
+		
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Semantics">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="SemStrategy"/>
+				<xs:element ref="OptionallyPossessed"/>
+				<xs:element ref="ObligatoryPossessed"/>
+			</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SemStrategy">
+			<xs:complexType>
+				<xs:attribute name="refStrategyID"  type="xs:string" use="required"></xs:attribute>
+				<xs:attribute name="refStrategy" type="refStrategyAttrType" use="required"></xs:attribute>
+			</xs:complexType>
+			</xs:element>
+			
+		<xs:simpleType name="refStrategyAttrType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Pronom" />
+			<xs:enumeration value="Nom" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:element name="OptionallyPossessed">
+			<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="i"/>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="Remark"/>
+			</xs:sequence>	
+			<xs:attribute name="InfoStatus" use="required"/>		
+		</xs:complexType>
+	</xs:element>
+
+	
+	<xs:element name="ObligatoryPossessed">
+			<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="i"/>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="Remark"/>
+				<xs:element name="Detransitivisation" minOccurs="1" maxOccurs="unbounded" type="ExampleType"/>
+			</xs:sequence>
+			<xs:attribute name="InfoStatus" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="i">
+		<xs:complexType mixed="true">	
+			<xs:attribute name="Resources" type="xs:string" use="required"/>
+			<xs:attribute name="Possessor" type="xs:string"/>
+			<xs:attribute name="Body" type="xs:string"/>
+			<xs:attribute name="Part-whole" type="xs:string"/>
+			<xs:attribute name="Animal" type="xs:string"/>
+			<xs:attribute name="Food" type="xs:string"/>
+			<xs:attribute name="Kinship" type="xs:string"/>
+			<xs:attribute name="info_status" type="xs:string"/>
+			<xs:attribute name="Remark" type="xs:string"/>
+			<xs:attribute name="NonPossessiveContext" type="xs:string"/>
+			<xs:attribute name="Nominalization" type="xs:string"/>
+			<xs:attribute name="Location" type="xs:string"/>
+			<xs:attribute name="Clothes" type="xs:string"/>			
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Juxtaposition">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" ref="Remark"/>
+				<xs:element ref="Determiner"/>
+				<xs:element ref="CompoundingTest"/>
+<!--				<xs:element ref="SyntEnvironment"/> -->
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CompoundingTest">
+		<xs:complexType mixed="true">
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="Text"/>
+				<xs:element ref="Gloss"/>
+				<xs:element ref="Translation"/>
+				<xs:element ref="Resources"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Morphology">
+		<xs:complexType>
+			<xs:sequence>			
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="Pronoun"/>
+				<xs:element minOccurs="0" ref="StemAlternation"/>
+				<xs:choice>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="MorphemePron"/>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="MorphemeNom"/>
+				</xs:choice>
+				<xs:element  ref="Determiner"/>
+<!--				<xs:element ref="SyntEnvironment"/> -->
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+		<xs:element name="MorphemeNom">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="Remark"/>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="morph"/>
+				<xs:element ref="Explanation"/>
+			
+			</xs:sequence>
+			<xs:attribute name="GramDefLabel" type="xs:string"/>
+			<xs:attribute name="AttachmentSite" use="required" type="xs:string"/>
+			<xs:attribute name="Pronoun" use="required" type="xs:string"/>
+			<xs:attribute name="UsedinPronominal" use="required" type="xs:string"/>
+			<xs:attribute name="Position" type="xs:string"/>
+		<!-- 	<xs:attribute name="pronoun" type="xs:string"/>  -->
+		</xs:complexType>
+	</xs:element>
+		<xs:element name="MorphemePron">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="Remark"/>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="morph"/>
+				<xs:element ref="Explanation"/>
+			
+			</xs:sequence>
+			<xs:attribute name="GramDefLabel" type="xs:string"/>
+			<xs:attribute name="AttachmentSite" use="required" type="xs:string"/>
+			<xs:attribute name="SharedWithNominal" use="required" type="xs:string"/>
+			<xs:attribute name="Position" type="xs:string"/>
+		<!-- 	<xs:attribute name="pronoun" type="xs:string"/>  -->
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="morph" type="xs:string"/>
+	<xs:element name="Remark" type="xs:string"/>
+	<xs:element name="Explanation" type="xs:string"/>
+<!--	<xs:element name="Morpheme">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="Remark"/>
+				<xs:element minOccurs="1" maxOccurs="unbounded" ref="morph"/>
+				<xs:element ref="Explanation"/>
+			
+			</xs:sequence>
+			<xs:attribute name="Label" type="xs:string"/>
+			<xs:attribute name="AttachmentSite" use="required" type="xs:string"/>
+			<xs:attribute name="Pronoun" type="xs:string"/>
+			<xs:attribute name="SharedWithNominal" type="xs:string"/>
+			<xs:attribute name="UsedinPronominal" type="xs:string"/>
+			<xs:attribute name="Position" type="xs:string"/>
+		
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="morph" type="xs:string"/>
+	<xs:element name="Remark" type="xs:string"/>
+	<xs:element name="Explanation" type="xs:string"/> -->
+	
+	<xs:element name="Pronoun">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" ref="Remark"/>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="pron"/>
+				<xs:element minOccurs="0" ref="Asymmetry"/>
+			</xs:sequence>
+			<xs:attribute name="Dedicated" use="required"/>
+			<xs:attribute name="AttachmentSite" use="required" type="xs:string"/>
+			<xs:attribute name="SharedwithNominal" use="required"/>
+			<xs:attribute name="Position" />		
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pron">
+		<xs:complexType mixed="true">
+			<xs:attribute name="proximity" type="xs:string"/>
+			<xs:attribute name="gender" type="xs:string"/>
+			<xs:attribute name="number" use="required" type="xs:string"/>
+			<xs:attribute name="person" use="required" type="xs:string"/>
+			<xs:attribute name="inclusive" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Asymmetry" type="xs:string"/>
+	
+	<xs:element name="StemAlternation" type="xs:string"/>
+	
+	<xs:element name="Determiner">
+		<xs:complexType>
+			<xs:attribute name="DetPossessor"  type="xs:string"/>
+			<xs:attribute name="PlacementOr" type="xs:string"/>			
+			<xs:attribute name="DetPossessed" use="required" type="xs:string"/>			
+			<xs:attribute name="PlacementEd" type="xs:string"/>	
+		</xs:complexType>
+	</xs:element>			
+	
+	<xs:element name="SyntEnvironment">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Adnominal" minOccurs="0" maxOccurs="unbounded" type="ExampleType"/>
+				<xs:element name="Predicative" minOccurs="0" maxOccurs="unbounded" type="ExampleType"/>
+				<xs:element name="EllidedPossessed" minOccurs="0" maxOccurs="unbounded" type="ExampleType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Remarks" type="xs:normalizedString"/>
+	<!-- <xs:element name="Text" type="xs:string"/> -->
+	<xs:element name="Text">
+		<xs:complexType mixed="true">
+			<xs:choice maxOccurs="unbounded" minOccurs="0">
+				<xs:element name="pPron" type="xs:string"></xs:element>
+				<xs:element name="pMorp" type="xs:string"></xs:element>
+				<xs:element name="pPosed" type="xs:string"></xs:element>
+				<xs:element name="pPosor" type="xs:string"></xs:element>
+			
+			</xs:choice>
+		</xs:complexType>
+	
+	</xs:element>
+	<xs:element name="Gloss" type="xs:string"/>
+	<xs:element name="Translation" type="xs:string"/>
+	
+	<xs:element name="Resources" type="xs:string" />
+	
+	<xs:complexType name="ExampleType">
+		<xs:sequence>
+			<xs:element ref="Remarks" minOccurs="0" />
+			<xs:element ref="Text" minOccurs="0" />
+			<xs:element ref="Gloss" minOccurs="0" />
+			<xs:element ref="Translation" minOccurs="0" />
+			<xs:element ref="Resources" minOccurs="0" />
+		
+		</xs:sequence>
+	</xs:complexType>
+	
+<!--	
+	<xs:Type name="ComplexityAttrType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="simplex" />
+			<xs:enumeration value="complex" />
+		</xs:restriction>
+	</xs:simpleType>
+	-->
+	
+	<xs:simpleType name="ReplaceableAttrType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="yes" />
+			<xs:enumeration value="?yes" />
+			<xs:enumeration value="no" />
+			<xs:enumeration value="?no" />
+			<xs:enumeration value="??" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+
+	
+
+</xs:schema>
+
+
