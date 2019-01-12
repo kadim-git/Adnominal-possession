@@ -67,29 +67,25 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="tag">GeneticRelation</td>
+				<td class="tag">Genus</td>
 				<td>
-					<xsl:value-of select="GeneticRelation" />
+					<xsl:value-of select="Genus" />
 				</td>
 			</tr>
+			<tr>
+				<td class="tag">Family</td>
+				<td>
+					<xsl:value-of select="Family" />
+				</td>
+			</tr>
+			
 			<tr>
 				<td class="tag">WordOrder</td>
 				<td>
 					<xsl:value-of select="WordOrder" />
 				</td>
 			</tr>
-			<tr>
-				<td class="tag">Case ???</td>
-				<td>
-					<xsl:value-of select="CaseSystem" />
-				</td>
-			</tr>
-			<tr>
-				<td class="tag">NominalPhrase ???</td>
-				<td>
-					???
-				</td>
-			</tr>
+			
 			<tr>
 				<td class="tag">InterchangeaStrategies</td>
 				<td>
