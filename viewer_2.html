@@ -307,24 +307,28 @@ font-size:small;
 }
 
 .StrategyPronomHeaderRow {
-	background-color: #aea9a4
+	background-color: #e7e7e7
 }
 
 .MorphRow {
-	background-color: #a7d7ff;
+	background-color: #ffffff;
 }
 
 .SyntEnvRow {
-	background-color: #d5ffa7;
+	background-color: #ffffff;
 }
 
 .SemantRow {
-	background-color: #fff2a7;
+	background-color: #ffffff;
 	vertical-align: top;
 }
 
 #StrategyPronomTable td {
 	width: 5em;
+}
+
+td:first-child {
+  background-color: #e7e7e7;
 }
 
 .stratTag {
@@ -378,7 +382,7 @@ font-size:small;
 }
 
 .possTable th {
-	background-color: #F0F000;
+	background-color: #B6C6DD;
 }
 
 #StrategyPronomTable, #StrategyNominTable,.pronPoss {
@@ -386,7 +390,7 @@ font-size:small;
 }
 
 #genInfo {
-	background-color: #ABD5B1;
+	background-color: #A0B4D1;
 }
 
 th {
@@ -416,7 +420,7 @@ td {
 
 .tag {
 	width: 100px;
-	background-color: #d0d0d0;
+	background-color: #e7e7e7;
 	font-weight: bold;
 }
 </style>
@@ -430,9 +434,9 @@ td {
 
 		</div>
 		<hr />
-		<input id="langPrev" type="button" value="&#8678 <<-- | Show Previous Lang "
+		<input id="langPrev" type="button" value="&#8678 <<-- | Show Previous Language "
 			onclick="displayLangMove(-1)" /> <input id="langNext" type="button"
-			value="Show Next Lang | >>" onclick="displayLangMove(1)" />
+			value="Show Next Language | -->>" onclick="displayLangMove(1)" />
 	</div>
 	<div class='debug' id="langsList"></div>
 	<hr />
