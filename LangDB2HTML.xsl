@@ -112,7 +112,7 @@
 					<span class="stratTag">Correspondence</span><br />
 					<xsl:for-each select="RelStrategies/Correspondence/PrnominalToNominal ">
 						<xsl:value-of select="position()" />.
-						<span>PrnominalToNominal: <xsl:value-of select="." /></span><br />
+						<span>PronominalToNominal: <xsl:value-of select="." /></span><br />
 					</xsl:for-each>
 
 					<span class="stratTag">AsymmetryGen</span><br />
