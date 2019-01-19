@@ -48,7 +48,7 @@
 					Language:
 					<xsl:value-of select="LangID" />
 
-					<span id="rawDataLink"><a target="_blank" href="lang_XMLasText.html?lang={LangID}"> Row Language data</a></span>
+					<span id="rawDataLink"><a target="_blank" href="lang_XMLasText.html?lang={LangID}"> View XML</a></span>
 				</th>
 			</tr>
 
