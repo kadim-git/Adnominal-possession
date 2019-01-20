@@ -110,7 +110,7 @@
 				<td class="tag">RelStrategies</td>
 				<td>
 					<span class="stratTag">Correspondence</span><br />
-					<xsl:for-each select="RelStrategies/Correspondence/PrnominalToNominal ">
+					<xsl:for-each select="RelStrategies/Correspondence/PronominalToNominal ">
 						<xsl:value-of select="position()" />.
 						<span>PronominalToNominal: <xsl:value-of select="." /></span><br />
 					</xsl:for-each>
