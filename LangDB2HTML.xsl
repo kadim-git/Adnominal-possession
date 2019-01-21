@@ -80,25 +80,31 @@
 			</tr>
 			
 			<tr>
-				<td class="tag">WordOrder</td>
+				<td class="tag">Word Order</td>
 				<td>
 					<xsl:value-of select="WordOrder" />
 				</td>
 			</tr>
 			
 			<tr>
-				<td class="tag">InterchangeaStrategies</td>
+				<!--<td class="tag">InterchangeaStrategies</td>  -->
+				<td class="tag">Marking alternations</td>
 				<td>
+					<span class="stratTag">MarkingAlternationsArePossible: </span>
+					<span><xsl:value-of select="InterchangeaStrategies/@MarkingAlternationsArePossible"/> </span>
+<!-- TODO-->
+<span class="stratTag"><xsl:if test="InterchangeaStrategies/@MarkingAlternationsArePossible='no'"> No marking alternations found.</xsl:if></span>
+<br />
 					<xsl:for-each select="InterchangeaStrategies/ExampleStr ">
 
 						<span class="stratTag"><xsl:value-of select="position()" />.
-							FactorsAffecting:</span><span><xsl:value-of select="@FactorsAffecting" />
+							Factors Affecting:</span><span><xsl:value-of select="@FactorsAffecting" />
 						</span>
 						<span class="stratTag">
 							 Strategies:</span><span><xsl:value-of select="@Strategies" />
 						</span>
 						<span class="stratTag">
-							 WordChanging:</span><span><xsl:value-of select="@WordChanging" />
+							 Word Changing:</span><span><xsl:value-of select="@WordChanging" />
 						</span>
 						<br />
 
@@ -107,15 +113,16 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="tag">RelStrategies</td>
+				<!--<td class="tag">RelStrategies</td>-->
+				<td class="tag">Relations between strategies</td>
 				<td>
 					<span class="stratTag">Correspondence</span><br />
 					<xsl:for-each select="RelStrategies/Correspondence/PronominalToNominal ">
 						<xsl:value-of select="position()" />.
-						<span>PronominalToNominal: <xsl:value-of select="." /></span><br />
+						<span>Pronominal to Nominal: <xsl:value-of select="." /></span><br />
 					</xsl:for-each>
 
-					<span class="stratTag">AsymmetryGen</span><br />
+					<span class="stratTag">Distributional Asymmetries</span><br />
 					<xsl:for-each select="RelStrategies/AsymmetryGen/Pronominal">
 						<xsl:value-of select="position()" />.
 						<span>Pronominal: <xsl:value-of select="." /></span><br />
@@ -304,7 +311,7 @@
 			<table class="possTable">
 				<tr>
 					<th>
-						PronominalPossession
+						Pronominal Possession
 						<input type="button" value="Show/Hide Strategies"
 							onclick="clickShowStrat('StrategyPronomTable')" />
 					</th>
