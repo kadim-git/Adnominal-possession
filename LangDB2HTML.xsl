@@ -90,10 +90,11 @@
 				<!--<td class="tag">InterchangeaStrategies</td>  -->
 				<td class="tag">Marking alternations</td>
 				<td>
-					<span class="stratTag">MarkingAlternationsArePossible: </span>
+					<span class="stratTag">Marking Alternations Are Possible: </span>
 					<span><xsl:value-of select="InterchangeaStrategies/@MarkingAlternationsArePossible"/> </span>
-<!-- TODO-->
+<!-- TODO
 <span class="stratTag"><xsl:if test="InterchangeaStrategies/@MarkingAlternationsArePossible='no'"> No marking alternations found.</xsl:if></span>
+-->
 <br />
 					<xsl:for-each select="InterchangeaStrategies/ExampleStr ">
 
